@@ -18,8 +18,8 @@ variables:
   environmentName: 'UshaSree'
 
   # Agent VM image name
-pool:
-  name: LinuxPool
+  pool:
+    name: LinuxPool
 
 stages:
 - stage: Build
