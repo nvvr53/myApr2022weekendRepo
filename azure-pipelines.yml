@@ -9,16 +9,17 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '076c9449-f0fe-463d-8570-6daed2c27065'
+  azureSubscription: '53e9cda3-ba92-4df9-a02e-c148abf16542'
 
   # Web app name
-  webAppName: 'mySuperAwesomeApp'
+  webAppName: 'UshaSree'
 
   # Environment name
-  environmentName: 'mySuperAwesomeApp'
+  environmentName: 'UshaSree'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  pool:
+    name: 'LinuxPool'
 
 stages:
 - stage: Build
@@ -27,7 +28,7 @@ stages:
   - job: MavenPackageAndPublishArtifacts
     displayName: Maven Package and Publish Artifacts
     pool:
-      vmImage: $(vmImageName)
+      name: 'LinuxPool'
 
     steps:
     - task: Maven@3
@@ -54,13 +55,13 @@ stages:
     displayName: Deploy Linux Web App
     environment: $(environmentName)
     pool:
-      vmImage: $(vmImageName)
+      name: 'LinuxPool'
     strategy:
       runOnce:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: mySuperAwesomeApp'
+            displayName: 'Azure Web App Deploy: UshaSree'
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
