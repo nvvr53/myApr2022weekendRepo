@@ -19,7 +19,7 @@ variables:
 
   # Agent VM image name
   pool:
-    name: LinuxPool
+  name: LinuxPool
 
 stages:
 - stage: Build
